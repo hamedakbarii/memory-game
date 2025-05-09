@@ -56,42 +56,39 @@ export default function MemoryGame() {
   };
 
   return (
-    <div className="flex flex-col justify-center items-center">
-      <h1 className="text-2xl font-bold my-10">Memory Game</h1>
+    <div className="flex flex-col justify-center items-center gap-10">
+      <h1 className="font-bold text-3xl py-10">Memory Game</h1>
 
       {gameOver && <h2 className="text-green-500 p-5">You WON! Congrats!</h2>}
 
-      <div className="flex justify-center items-center">
-        <div className="grid grid-cols-4 gap-5 justify-center items-center mx-auto">
-          {cards.map((card, index) => (
-            <div
-              key={index}
-              onClick={() => handleClick(index)}
-              className={`relative flex justify-center items-center text-4xl font-bold text-black w-20 h-20 md:w-28 md:h-28 bg-slate-200 transform cursor-pointer transition-transform duration-300 ${
-                flipped.includes(index) || solved.includes(index)
-                  ? "rotate-180"
-                  : ""
-              }`}
-            >
-              {flipped.includes(index) || solved.includes(index) ? (
-                <Image
-                  className="rotate-180 object-contain"
-                  src={`/memory-cards/${card}.webp`}
-                  alt="Memory Card"
-                  fill
-                  sizes="(max-width: 768px) 100%, (min-width: 768px) 100%"
-                />
-              ) : (
-                "?"
-              )}
-            </div>
-          ))}
-        </div>
+      <div className="grid grid-cols-4 gap-5 mt-5">
+        {cards.map((card, index) => (
+          <div
+            className={`flex justify-center text-4xl font-bold text-black items-center sm:w-28 w-[70px] sm:h-28 h-[70px] bg-slate-200 transform cursor-pointer transition-transform duration-300 ${
+              flipped.includes(index) || solved.includes(index)
+                ? "rotate-180"
+                : ""
+            }`}
+            key={index}
+            onClick={() => handleClick(index)}
+          >
+            {flipped.includes(index) || solved.includes(index) ? (
+              <Image
+                className="rotate-180"
+                src={`/memory-cards/${card}.webp`}
+                fill
+                alt="Memory Card"
+              />
+            ) : (
+              "?"
+            )}
+          </div>
+        ))}
       </div>
 
       <button
         onClick={resetGame}
-        className="p-3 bg-slate-500 text-white rounded-md my-10"
+        className="flex p-5 bg-slate-500 rounded-md mt-5"
       >
         Restart
       </button>

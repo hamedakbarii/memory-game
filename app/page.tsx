@@ -3,10 +3,10 @@ import Link from "next/link";
 
 export default function Home() {
   return (
-    <main className="w-full flex min-h-screen flex-col items-center justify-between">
+    <main className="flex flex-col justify-between items-center">
       <MemoryGame />
 
-      <div className="my-10">
+      <div className="mt-20">
         Made with ❤️ by{" "}
         <Link
           href={"https://www.hamedakbri.ir"}
