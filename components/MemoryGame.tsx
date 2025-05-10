@@ -74,10 +74,11 @@ export default function MemoryGame() {
           >
             {flipped.includes(index) || solved.includes(index) ? (
               <Image
-                className="rotate-180"
+                className="rotate-180 object-contain"
                 src={`/memory-cards/${card}.webp`}
-                fill
                 alt="Memory Card"
+                width={112} // same as w-28
+                height={112}
               />
             ) : (
               "?"
