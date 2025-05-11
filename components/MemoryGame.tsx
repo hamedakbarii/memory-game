@@ -61,30 +61,32 @@ export default function MemoryGame() {
 
       {gameOver && <h2 className="text-green-500 p-5">You WON! Congrats!</h2>}
 
-      <div className="grid grid-cols-4 gap-5 mt-5">
-        {cards.map((card, index) => (
-          <div
-            className={`flex justify-center text-4xl font-bold text-black items-center sm:w-28 w-[70px] sm:h-28 h-[70px] bg-slate-200 transform cursor-pointer transition-transform duration-300 ${
-              flipped.includes(index) || solved.includes(index)
-                ? "rotate-180"
-                : ""
-            }`}
-            key={index}
-            onClick={() => handleClick(index)}
-          >
-            {flipped.includes(index) || solved.includes(index) ? (
-              <Image
-                className="rotate-180 object-contain"
-                src={`/memory-cards/${card}.webp`}
-                alt="Memory Card"
-                width={112} // same as w-28
-                height={112}
-              />
-            ) : (
-              "?"
-            )}
-          </div>
-        ))}
+      <div className="w-full max-w-md mx-auto px-2">
+        <div className="grid grid-cols-4 gap-2 sm:gap-5 mt-5 justify-center">
+          {cards.map((card, index) => (
+            <div
+              className={`flex justify-center text-4xl font-bold text-black items-center sm:w-28 w-[70px] sm:h-28 h-[70px] bg-slate-200 transform cursor-pointer transition-transform duration-300 ${
+                flipped.includes(index) || solved.includes(index)
+                  ? "rotate-180"
+                  : ""
+              }`}
+              key={index}
+              onClick={() => handleClick(index)}
+            >
+              {flipped.includes(index) || solved.includes(index) ? (
+                <Image
+                  className="rotate-180 object-contain"
+                  src={`/memory-cards/${card}.webp`}
+                  alt="Memory Card"
+                  width={112}
+                  height={112}
+                />
+              ) : (
+                "?"
+              )}
+            </div>
+          ))}
+        </div>
       </div>
 
       <button
