@@ -80,6 +80,7 @@ export default function MemoryGame() {
                   alt="Memory Card"
                   width={112}
                   height={112}
+                  priority // preload first 8 cards (adjust as needed)
                 />
               ) : (
                 "?"
