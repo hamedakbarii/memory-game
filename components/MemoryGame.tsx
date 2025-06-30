@@ -2,20 +2,21 @@
 
 import Image from "next/image";
 import { useEffect, useState } from "react";
+import ImagePreloader from "./ImagePreloader";
 import { useTheme } from "./ThemeProvider";
 
-const generateDeck = () => {
-  const memoryCards = [
-    "dwarf",
-    "orc-connector",
-    "elf",
-    "orcish-ai-nextjs-framework",
-    "orcishcity",
-    "orcishlogo",
-    "orcishmage",
-    "textualgames",
-  ];
+const memoryCards = [
+  "dwarf",
+  "orc-connector",
+  "elf",
+  "orcish-ai-nextjs-framework",
+  "orcishcity",
+  "orcishlogo",
+  "orcishmage",
+  "textualgames",
+];
 
+const generateDeck = () => {
   const deck = [...memoryCards, ...memoryCards];
   return deck.sort(() => Math.random() - 0.5);
 };
@@ -111,6 +112,7 @@ export default function MemoryGame() {
 
   return (
     <section className="w-full min-h-screen flex flex-col justify-center items-center gap-10 py-8">
+      <ImagePreloader images={memoryCards} />
       <div className="flex items-center w-full px-4">
         <h1 className="font-bold text-3xl py-10 flex justify-center items-center w-full">
           Memory Game
@@ -166,7 +168,6 @@ export default function MemoryGame() {
                   alt="Memory Card"
                   width={112}
                   height={112}
-                  priority
                 />
               ) : (
                 <span className="text-gray-600 dark:text-gray-300">?</span>
